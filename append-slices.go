@@ -15,8 +15,8 @@ func main() {
 	printSlice2(s)
 
 	// 可以一次性添加多个元素
-	// todo 为什么cap变成6了？
-	s = append(s, 2, 3, 4)
+	// 关于slice的增长，可以写一篇文章了
+	s = append(s, 2, 3, 4, 5, 6, 7, 8)
 	printSlice2(s)
 }
 
