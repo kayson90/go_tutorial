@@ -2,15 +2,15 @@ package main
 
 import "fmt"
 
-type I interface {
+type I2 interface {
 	M()
 }
 
-type T struct {
+type T2 struct {
 	S string
 }
 
-func (t *T) M() {
+func (t *T2) M() {
 	if t == nil {
 		fmt.Println("<nil>")
 		return
@@ -19,14 +19,18 @@ func (t *T) M() {
 }
 
 func main() {
-	var i I
+	var i I2
 
-	var t *T
+	var t *T2
 	i = t
-	describe(i)
-	i.M()
+	describe2(i)
+	i.M() //不会出现NPE，因为i的值是nil，类型是结构体指针，要以类型为准
 
-	i = &T{"hello"}
-	describe(i)
+	i = &T2{"hello"}
+	describe2(i)
 	i.M()
+}
+
+func describe2(i I2) {
+	fmt.Printf("(%v, %T)\n", i, i)
 }
